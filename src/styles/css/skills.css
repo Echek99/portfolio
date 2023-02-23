@@ -1,0 +1,72 @@
+.skills--container{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.skill--container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-basis: calc((100% - 2 * 10px) / 6);
+    max-width: calc((100% - 2 * 2 * 10px) / 6);
+    box-sizing: border-box;
+    border: 1px solid #495d83;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 20px;
+    font-family: 'Alegreya Sans', sans-serif;
+}
+.skill--container > p{
+    font-size: 26px;
+}
+.skill--image{
+    height: 125px;
+    width: 125px;
+    margin-bottom: auto;
+}
+.skill--name{
+    font-size: 40px;
+}
+.long{
+    width: 225px;
+    height: 85px;
+    margin-bottom: auto;
+}
+.tall{
+    height: 175px;
+    width: 110px;
+}
+.rectangle{
+    width: 170px;
+    height: 148px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .skill--container {
+        flex-basis: calc((100% - 2 * 10px) / 3);
+        max-width: calc((100% - 2 * 2 * 10px) / 3);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .long{
+        width: 180px;
+        height: 64px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .skill--container {
+        flex-basis: calc((100% - 2 * 10px) / 2);
+        max-width: calc((100% - 2 * 2 * 10px) / 2);
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .skill--container {
+        flex-basis: calc((100% - 2 * 10px) / 1);
+        max-width: calc((100% - 2 * 2 * 10px) / 1);
+    }
+}

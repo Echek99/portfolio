@@ -1,0 +1,54 @@
+.game--container{
+    width: fit-content;
+    margin: 0 auto 50px auto;
+    font-family: 'Alegreya Sans', sans-serif;
+}
+.game--instructions__container{
+    margin-bottom: 50px;
+}
+.game--instructions__container > h3{
+    margin: 0;
+    font-size: 30px;
+}
+.game--instructions__container > p{
+    margin: 0;
+    font-size: 26px;
+}
+.game--buttons__container{
+    display: flex;
+    flex-direction: column;
+    min-width: 520px;
+    max-width: 520px;
+}
+.game--button__start{
+    height: 40px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 24px;
+    width: 100%;
+}
+.game--button__timer{
+    height: 400px;
+    cursor: pointer;
+}
+.game--score__container > p{
+    font-size: 20px;
+}
+
+@media screen and (max-width:550px) {
+    .game--instructions__container{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .game--score__container{
+        text-align: center;
+    }
+    .game--button__start{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .game--button__timer{
+        width: 80%;
+        margin: 10px auto;
+    }
+}
