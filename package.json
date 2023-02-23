@@ -1,7 +1,7 @@
 {
   "homepage": "https://Echek99.github.io/portfolio",
   "name": "portfolio",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
