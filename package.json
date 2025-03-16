@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "install:vercel": "npm install --legacy-peer-deps"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
