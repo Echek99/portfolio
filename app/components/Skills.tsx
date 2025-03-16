@@ -49,6 +49,8 @@ const SkillsSection: React.FC = () => {
                          transition-colors duration-200"
             >
               <Image
+              width={24}
+              height={24}
                 src={skill.icon}
                 alt={skill.name}
                 className="w-6 h-6 object-contain flex-shrink-0"
