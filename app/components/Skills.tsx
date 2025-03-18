@@ -27,6 +27,7 @@ const skillsData = [
   { name: "Canva", icon: "/icons/canva.svg", color: "#00C4CC" },
   { name: "Lucide", icon: "/icons/lucide.svg", color: "#74363d" },
   { name: "Tailwind", icon: "/icons/tailwind.svg", color: "#38B2AC" },
+  { name: "Local Storage", icon: "/icons/localstorage.svg", color: "#000" },
 ];
 
 const SkillsSection: React.FC = () => {

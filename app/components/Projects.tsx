@@ -2,12 +2,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const projectsData = [
   {
     id: 1,
     title: "Armsacres.io (Client)",
-    description: "A fully functional e-commerce platform with payment integration and user authentication.",
+    description: "E-commerce website for a Weed delivery service.",
     liveUrl: "https://armsacres.io",
     tools: [
       { name: "Next.js", icon: "/icons/nextjs.svg", color: "#fff" },
@@ -15,7 +16,12 @@ const projectsData = [
       { name: "Sanity", icon: "/icons/sanity.svg", color: "#F03E2F" },
       { name: "Git", icon: "/icons/git.svg", color: "#F05032" },
       { name: "Nodemailer", icon: "/icons/nodemailer.svg", color: "#34A853" },
-      
+      { name: "Canva", icon: "/icons/canva.svg", color: "#00C4CC" },
+      { name: "CSS", icon: "/icons/css.svg", color: "#1572B6" },
+      { name: "Tailwind", icon: "/icons/tailwind.svg", color: "#38B2AC" },
+      { name: "Lucide", icon: "/icons/lucide.svg", color: "#74363d" },
+      { name: "react-three-fiber", icon: "/icons/react-three-fiber.svg", color: "#000" },
+      { name: "Local Storage", icon: "/icons/localstorage.svg", color: "#000" },
     ],
     type: "website",
     shadowColor: "#90d200", // Lime green for Armsacres
@@ -25,6 +31,17 @@ const projectsData = [
     title: "BigGToys (Client)",
     description: "A modern corporate website with a blog, contact form, and admin dashboard.",
     liveUrl: "https://biggtoys.vercel.app/",
+    tools: [
+      { name: "Next.js", icon: "/icons/nextjs.svg", color: "#fff" },
+      { name: "React", icon: "/icons/react.svg", color: "#61DAFB" },
+      { name: "Sanity", icon: "/icons/sanity.svg", color: "#F03E2F" },
+      { name: "Git", icon: "/icons/git.svg", color: "#F05032" },
+      { name: "Nodemailer", icon: "/icons/nodemailer.svg", color: "#34A853" },
+      { name: "CSS", icon: "/icons/css.svg", color: "#1572B6" },
+      { name: "Tailwind", icon: "/icons/tailwind.svg", color: "#38B2AC" },
+      { name: "Gimp", icon: "/icons/gimp.svg", color: "#5C5543" },
+      { name: "Lucide", icon: "/icons/lucide.svg", color: "#74363d" },
+    ],
     type: "website",
     shadowColor: "#FF6B6B", // Light red for BigGToys
   },
@@ -33,6 +50,12 @@ const projectsData = [
     title: "LocalStorage Diary",
     description: "A simple diary app that saves entries to the browser's localStorage.",
     liveUrl: "https://echek99.github.io/your-online-diary/",
+    tools: [
+      { name: "JavaScript", icon: "/icons/javascript.svg", color: "#F7DF1E" },
+      { name: "React", icon: "/icons/react.svg", color: "#61DAFB" },
+      { name: "Local Storage", icon: "/icons/localstorage.svg", color: "#000" },
+      { name: "FontAwesome", icon: "/icons/fontawesome.svg", color: "#228BE6" },
+    ],
     type: "software",
     shadowColor: "#00FFFF", // Aqua green for LocalStorage Diary
   },
@@ -111,32 +134,61 @@ const ProjectsSection = () => {
                       </button>
 
                       {openProjectId === project.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="px-6 pb-6"
-                        >
-                          <div className="flex flex-col gap-6 border-t border-gray-700/20 pt-6">
-                            {project.liveUrl && (
-                              <div className="w-full h-[400px] sm:h-[500px] relative rounded-lg overflow-hidden shadow-lg">
-                                <iframe
-                                  src={project.liveUrl}
-                                  className="w-full h-full border-none"
-                                  title={`Live Preview - ${project.title}`}
-                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                  allowFullScreen
-                                />
-                              </div>
-                            )}
+  <motion.div
+    initial={{ opacity: 0, height: 0 }}
+    animate={{ opacity: 1, height: "auto" }}
+    exit={{ opacity: 0, height: 0 }}
+    transition={{ duration: 0.3 }}
+    className="px-6 pb-6"
+  >
+    <div className="flex flex-col gap-6 border-t border-gray-700/20 pt-6">
+      {project.liveUrl && (
+        <div className="w-full h-[400px] sm:h-[500px] relative rounded-lg overflow-hidden shadow-lg">
+          <iframe
+            src={project.liveUrl}
+            className="w-full h-full border-none"
+            title={`Live Preview - ${project.title}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      )}
 
-                            <div className="flex flex-col sm:flex-row items-center gap-6">
-                              <p className="text-gray-300 flex-1">{project.description}</p>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
+      <div className="flex flex-col sm:flex-row items-center gap-6">
+        <p className="text-gray-300 flex-1">{project.description}</p>
+      </div>
+
+      {/* Add tools display here */}
+      {project.tools && (
+        <div className="flex flex-wrap gap-1">
+          {project.tools.map((tool, toolIndex) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: toolIndex * 0.1 }}
+              className="flex items-center p-1 space-x-2 bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200"
+            >
+              <Image
+                width={24}
+                height={24}
+                src={tool.icon}
+                alt={tool.name}
+                className="w-6 h-6 object-contain flex-shrink-0"
+                style={{
+                  filter: `drop-shadow(2px 2px 8px ${tool.color}66)`,
+                }}
+              />
+              <span className="text-sm font-medium text-gray-300">
+                {tool.name}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      )}
+    </div>
+  </motion.div>
+)}
                     </div>
                   </motion.div>
                 ))}
