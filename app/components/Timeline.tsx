@@ -12,13 +12,15 @@ const timelineData = [
     year: "2021",
     title: "Beewo (Remote Internship)",
     tech: ["Ruby on Rails", "React", "Linux", "Git"],
-    content: "Fullstack development for business management SaaS platform, Graduated High School."
+    content: "Fullstack development for business management SaaS platform, Graduated High School.",
+    file: "/files/Beewo_recommendation_letter.docx" // Added file property
   },
   {
     year: "2022 Q1-Q2",
     title: "Control IT (Contractor)",
     tech: ["PHP", "Python", "PowerApps", "SQL"],
-    content: "Enterprise software debugging and feature development"
+    content: "Enterprise software debugging and feature development",
+    file: "/files/control_it_julian_echeverri.pdf" // Added file property
   },
   {
     year: "2022 Q3-Q4",
@@ -103,12 +105,42 @@ const Timeline = () => {
                 <p className={`text-gray-300 text-sm ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                   {item.content}
                 </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              {/* Add download button for 2021 entry */}
+              {item.file && (
+                <div className={`mt-4 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"} flex`}>
+                  <a
+                    href={item.file}
+                    download
+                    className="inline-flex items-center px-4 py-2 border border-green-400 rounded-full text-sm font-medium text-green-300 hover:bg-green-900/40 transition-colors duration-200 cursor-pointer"
+                    style={{
+                      textShadow: "0 0 8px rgba(110, 231, 183, 0.3)",
+                      backdropFilter: "blur(4px)",
+                    }}
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                    Download Recommendation Letter
+                  </a>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
+  </div>
   );
 };
 

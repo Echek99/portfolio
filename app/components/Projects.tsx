@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const projectsData = [
   {
     id: 1,
     title: "Armsacres.io (Client)",
-    description: "E-commerce website for a Weed delivery service.",
+    description: "E-commerce website for a Weed delivery service located in NYC.",
     liveUrl: "https://armsacres.io",
     tools: [
       { name: "Next.js", icon: "/icons/nextjs.svg", color: "#fff" },
@@ -29,8 +30,8 @@ const projectsData = [
   {
     id: 2,
     title: "BigGToys (Client)",
-    description: "A modern corporate website with a blog, contact form, and admin dashboard.",
-    liveUrl: "https://biggtoys.vercel.app/",
+    description: "Dynamic website for a Exotic car dealership.",
+    liveUrl: "https://biggtoysmiami.com/",
     tools: [
       { name: "Next.js", icon: "/icons/nextjs.svg", color: "#fff" },
       { name: "React", icon: "/icons/react.svg", color: "#61DAFB" },
@@ -134,61 +135,65 @@ const ProjectsSection = () => {
                       </button>
 
                       {openProjectId === project.id && (
-  <motion.div
-    initial={{ opacity: 0, height: 0 }}
-    animate={{ opacity: 1, height: "auto" }}
-    exit={{ opacity: 0, height: 0 }}
-    transition={{ duration: 0.3 }}
-    className="px-6 pb-6"
-  >
-    <div className="flex flex-col gap-6 border-t border-gray-700/20 pt-6">
-      {project.liveUrl && (
-        <div className="w-full h-[400px] sm:h-[500px] relative rounded-lg overflow-hidden shadow-lg">
-          <iframe
-            src={project.liveUrl}
-            className="w-full h-full border-none"
-            title={`Live Preview - ${project.title}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-      )}
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="px-6 pb-6"
+                        >
+                          <div className="flex flex-col gap-6 border-t border-gray-700/20 pt-6">
+                          <p className="text-gray-300 font-semibold text-md italic ml-2">Live preview</p>
+                            {project.liveUrl && (
+                              <div className="w-full h-[400px] sm:h-[500px] relative rounded-lg overflow-hidden shadow-lg">
+                                <iframe
+                                  src={project.liveUrl}
+                                  className="w-full h-full border-none"
+                                  title={`Live Preview - ${project.title}`}
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                  allowFullScreen
+                                />
+                              </div>
+                            )}
 
-      <div className="flex flex-col sm:flex-row items-center gap-6">
-        <p className="text-gray-300 flex-1">{project.description}</p>
-      </div>
+                            <div className="flex-col sm:flex-row items-center gap-6 ">
+                              <Link href={project.liveUrl} target="_blank" passHref className="text-blue-500 text-xl">
+                                {project.liveUrl}
+                              </Link>
+                              <p className="text-gray-300 flex-1">{project.description}</p>
+                            </div>
 
-      {/* Add tools display here */}
-      {project.tools && (
-        <div className="flex flex-wrap gap-1">
-          {project.tools.map((tool, toolIndex) => (
-            <motion.div
-              key={tool.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: toolIndex * 0.1 }}
-              className="flex items-center p-1 space-x-2 bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200"
-            >
-              <Image
-                width={24}
-                height={24}
-                src={tool.icon}
-                alt={tool.name}
-                className="w-6 h-6 object-contain flex-shrink-0"
-                style={{
-                  filter: `drop-shadow(2px 2px 8px ${tool.color}66)`,
-                }}
-              />
-              <span className="text-sm font-medium text-gray-300">
-                {tool.name}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      )}
-    </div>
-  </motion.div>
-)}
+                            {/* Add tools display here */}
+                            {project.tools && (
+                              <div className="flex flex-wrap gap-1">
+                                {project.tools.map((tool, toolIndex) => (
+                                  <motion.div
+                                    key={tool.name}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.4, delay: toolIndex * 0.1 }}
+                                    className="flex items-center p-1 space-x-2 bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200"
+                                  >
+                                    <Image
+                                      width={24}
+                                      height={24}
+                                      src={tool.icon}
+                                      alt={tool.name}
+                                      className="w-6 h-6 object-contain flex-shrink-0"
+                                      style={{
+                                        filter: `drop-shadow(2px 2px 8px ${tool.color}66)`,
+                                      }}
+                                    />
+                                    <span className="text-sm font-medium text-gray-300">
+                                      {tool.name}
+                                    </span>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
                     </div>
                   </motion.div>
                 ))}
