@@ -1,6 +1,5 @@
 import SocialIcons from "./SocialIcons";
 import SkillsSection from "./Skills";
-import { motion } from "framer-motion";
 
 const Intro = () => {
     return (
