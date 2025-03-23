@@ -14,7 +14,7 @@ const Intro = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h1 className="text-5xl md:text-6xl font-medium bg-gradient-to-r from-indigo-200 to-green-200 bg-clip-text text-transparent">
-                        Hey there! I'm{" "}
+                        Hey there! I&apos;m{" "}
                         <span className="bg-gradient-to-r from-indigo-300 to-green-300 bg-clip-text text-transparent">
                             Julian Echeverri
                         </span>

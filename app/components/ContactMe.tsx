@@ -127,7 +127,7 @@ const ContactSection = () => {
                                     type: "email",
                                     value: formData.email,
                                 },
-                            ].map((field, index) => (
+                            ].map((field) => (
                                 <div key={field.id}>
                                     <label
                                         htmlFor={field.id}
