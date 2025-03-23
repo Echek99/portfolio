@@ -45,118 +45,163 @@ const ContactSection = () => {
     };
 
     return (
-        <div className="pt-12 px-4 sm:px-6 lg:px-8 text-white my-12" id="contact">
+        <div className="pt-20 px-4 sm:px-6 lg:px-8 text-white" id="contact">
             <div className="max-w-6xl mx-auto relative my-12">
-                <motion.h1
-                    className="text-4xl font-thin text-left mb-12 uppercase italic"
-                    style={{
-                        textShadow: "0 0 15px rgba(0, 255, 0, 0.8)", // Green glow effect
-                    }}>
-                    Get in Touch
-                </motion.h1>
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-16"
+                >
+                    <h1 className="text-4xl font-medium text-left mb-4 bg-gradient-to-r from-indigo-200 to-green-200 bg-clip-text text-transparent">
+                        Get in Touch
+                    </h1>
+                    <div className="h-[2px] w-24 bg-gradient-to-r from-indigo-400/60 to-green-400/60 rounded-full" />
+                </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12">
+                <div className="grid md:grid-cols-2 gap-8">
                     {/* Contact Information */}
                     <motion.div
-                        className="space-y-4 sm:space-y-6" // Reduced spacing on mobile
+                        className="space-y-4"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        {/* Location Card */}
-                        <div className="bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200 p-4 sm:p-6 rounded-lg flex items-start gap-4">
-                            <MapPin className="h-6 w-6 sm:h-8 sm:w-8 text-green-400 flex-shrink-0" /> {/* Smaller icon on mobile */}
-                            <div>
-                                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Location</h3> {/* Smaller text on mobile */}
-                                <p className="text-sm sm:text-base text-gray-300">New York City, NY</p> {/* Smaller text on mobile */}
-                            </div>
-                        </div>
-
-                        {/* Email Card */}
-                        <div className="bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200 p-4 sm:p-6 rounded-lg flex items-start gap-4">
-                            <Mail className="h-6 w-6 sm:h-8 sm:w-8 text-green-400 flex-shrink-0" /> {/* Smaller icon on mobile */}
-                            <div>
-                                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Email</h3> {/* Smaller text on mobile */}
-                                <p className="text-sm sm:text-base text-gray-300">echeverrijulian100@gmail.com</p> {/* Smaller text on mobile */}
-                            </div>
-                        </div>
+                        {[
+                            {
+                                icon: MapPin,
+                                title: "Location",
+                                content: "New York City, NY",
+                            },
+                            {
+                                icon: Mail,
+                                title: "Email",
+                                content: "echeverrijulian100@gmail.com",
+                            },
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                whileHover={{ y: -5 }}
+                                className="bg-gradient-to-br from-gray-800/70 to-gray-900/50 backdrop-blur-lg border border-gray-700/30 rounded-xl p-6 hover:border-indigo-400/50 transition-colors group"
+                            >
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 bg-indigo-500/10 rounded-lg">
+                                        <item.icon className="h-6 w-6 text-indigo-400" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-medium text-gray-100 mb-1">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-gray-300">{item.content}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
                     </motion.div>
 
                     {/* Contact Form */}
                     <motion.form
                         onSubmit={handleSubmit}
-                        className="bg-gray-800/50
-                         border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70
-                         transition-colors duration-200 p-6 rounded-lg"
+                        className="bg-gradient-to-br from-gray-800/70 to-gray-900/50 backdrop-blur-lg border border-gray-700/30 rounded-xl p-8"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
                         <div className="space-y-6">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Name
-                                </label>
-                                <div className="relative">
-                                    <UserRound className="h-5 w-5 text-green-400 absolute left-3 top-3" />
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        required
-                                        className="w-full pl-10 pr-4 py-3 bg-black/20 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    />
+                            {[
+                                {
+                                    id: "name",
+                                    label: "Name",
+                                    icon: UserRound,
+                                    type: "text",
+                                    value: formData.name,
+                                },
+                                {
+                                    id: "email",
+                                    label: "Email",
+                                    icon: Mail,
+                                    type: "email",
+                                    value: formData.email,
+                                },
+                            ].map((field, index) => (
+                                <div key={field.id}>
+                                    <label
+                                        htmlFor={field.id}
+                                        className="block text-sm font-medium text-gray-300 mb-2"
+                                    >
+                                        {field.label}
+                                    </label>
+                                    <div className="relative">
+                                        <field.icon className="h-5 w-5 text-indigo-400 absolute left-3 top-3" />
+                                        <input
+                                            type={field.type}
+                                            id={field.id}
+                                            required
+                                            className="w-full pl-10 pr-4 py-3 bg-black/20 border border-gray-700/50 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all"
+                                            value={field.value}
+                                            onChange={(e) =>
+                                                setFormData({
+                                                    ...formData,
+                                                    [field.id]: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Email
-                                </label>
-                                <div className="relative">
-                                    <Mail className="h-5 w-5 text-green-400 absolute left-3 top-3" />
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        required
-                                        className="w-full pl-10 pr-4 py-3 bg-black/20 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label
+                                    htmlFor="message"
+                                    className="block text-sm font-medium text-gray-300 mb-2"
+                                >
                                     Message
                                 </label>
                                 <textarea
                                     id="message"
                                     rows={4}
                                     required
-                                    className="w-full px-4 py-3 bg-black/20 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                                    className="w-full px-4 py-3 bg-black/20 border border-gray-700/50 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all"
                                     value={formData.message}
-                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, message: e.target.value })
+                                    }
                                 />
                             </div>
 
                             <motion.button
                                 type="submit"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 disabled={isSubmitting}
-                                className="w-full bg-green-400/10 border border-green-400 text-green-400 px-6 py-3 rounded-lg hover:bg-green-400/20 transition-colors duration-300 flex items-center justify-center gap-2"
+                                className="w-full bg-indigo-500/10 border border-indigo-400/50 text-indigo-300 px-6 py-3 rounded-lg hover:bg-indigo-500/20 transition-all duration-300 flex items-center justify-center gap-2 group"
                             >
                                 {isSubmitting ? (
                                     <>
-                                        <div className="h-4 w-4 border-2 border-green-400 rounded-full animate-spin" />
+                                        <div className="h-4 w-4 border-2 border-indigo-300 rounded-full animate-spin" />
                                         Sending...
                                     </>
                                 ) : (
-                                    "Send Message"
+                                    <>
+                                        Send Message
+                                        <svg
+                                            className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                            />
+                                        </svg>
+                                    </>
                                 )}
                             </motion.button>
 
@@ -164,15 +209,16 @@ const ContactSection = () => {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`p-4 rounded-lg ${submitStatus === 'success'
-                                        ? 'bg-green-400/10 border border-green-400'
-                                        : 'bg-red-400/10 border border-red-400'
-                                        }`}
+                                    className={`p-4 rounded-lg ${
+                                        submitStatus === "success"
+                                            ? "bg-indigo-400/10 border border-indigo-400"
+                                            : "bg-red-400/10 border border-red-400"
+                                    }`}
                                 >
                                     <p className="text-sm">
-                                        {submitStatus === 'success'
-                                            ? 'Message sent successfully! 🎉 \n i will get back to you ASAP.'
-                                            : error || 'Failed to send message. Please try again.'}
+                                        {submitStatus === "success"
+                                            ? "Message sent successfully! 🎉 I'll get back to you ASAP."
+                                            : error || "Failed to send message. Please try again."}
                                     </p>
                                 </motion.div>
                             )}

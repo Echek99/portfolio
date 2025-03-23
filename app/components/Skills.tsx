@@ -33,7 +33,7 @@ const skillsData = [
 const SkillsSection: React.FC = () => {
 
   return (
-    <div className="pt-12 px-4 sm:px-6 lg:px-8 text-white mb-12" id="skills">
+    <div className="pt-6 px-4 sm:px-6 lg:px-8 text-white mb-12" id="skills">
       <div className="max-w-4xl mx-auto relative">
         {/* <h1 className="text-3xl font-bold text-center mb-8 uppercase">Skills</h1> */}
 

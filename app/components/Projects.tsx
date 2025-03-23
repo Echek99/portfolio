@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -84,29 +84,35 @@ const ProjectsSection = () => {
   }, {} as Record<string, typeof projectsData>);
 
   return (
-    <div className="pt-12 px-4 sm:px-6 lg:px-8 text-white mb-12 min-h-screen" id="projects">
+    <div className="pt-20 px-4 sm:px-6 lg:px-8 text-white mb-12 min-h-screen" id="projects">
       <div className="max-w-6xl mx-auto relative">
-        <h1
-          className="text-4xl font-thin text-left mb-12 uppercase italic"
-          style={{
-            textShadow: "0 0 15px rgba(0, 255, 0, 0.8)", // Green glow effect
-          }}>
-          Projects
-        </h1>
-        <div className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h1 className="text-4xl font-medium text-left mb-4 bg-gradient-to-r from-indigo-200 to-green-200 bg-clip-text text-transparent">
+            Projects
+          </h1>
+          <div className="h-[2px] w-24 bg-gradient-to-r from-indigo-400/60 to-green-400/60 rounded-full" />
+        </motion.div>
+
+        <div className="relative space-y-12">
           {Object.entries(groupedProjects).map(([type, projects], sectionIndex) => (
             <div key={type} className={sectionIndex > 0 ? "mt-12" : ""}>
               <motion.h2
-                className="font-semibold uppercase mb-8 italic text-xl"
+                className="font-medium text-lg mb-8 text-gray-300 tracking-wide"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: sectionIndex * 0.2 }}
               >
-                {type === "website" ? "Websites" : "Software Projects"}
+                {type === "website" ? "Web Development" : "Software Solutions"}
               </motion.h2>
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {projects.map((project, index) => (
                   <motion.div
                     key={project.id}
@@ -116,21 +122,27 @@ const ProjectsSection = () => {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     <div
-                      className="bg-gray-800/50 border border-gray-700 backdrop-blur-sm overflow-hidden"
+                      className="bg-gradient-to-br from-gray-800/70 to-gray-900/50 backdrop-blur-lg rounded-xl border border-gray-700/30 overflow-hidden transition-all hover:border-gray-700/50"
                       style={{
-                        boxShadow: `0 0 10px 2px ${project.shadowColor}66`, // Blurry, bright shadow
+                        boxShadow: `0 4px 24px -4px ${project.shadowColor}20`,
                       }}
                     >
                       <button
                         onClick={() => toggleProject(project.id)}
-                        className="w-full p-6 flex items-center justify-between hover:bg-gray-800/70 transition-colors"
+                        className="w-full px-6 py-5 flex items-center justify-between group"
                       >
-                        <h3 className="text-lg font-semibold text-gray-300">{project.title}</h3>
+                        <div className="text-left">
+                          <h3 className="text-xl font-medium text-gray-100 group-hover:text-indigo-200 transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-sm text-gray-400 mt-1">{project.description}</p>
+                        </div>
                         <motion.div
                           animate={{ rotate: openProjectId === project.id ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
+                          className="text-gray-400 group-hover:text-indigo-300 transition-colors"
                         >
-                          <ChevronDown className="h-6 w-6 text-gray-300" />
+                          <ChevronDown className="h-6 w-6" />
                         </motion.div>
                       </button>
 
@@ -140,55 +152,68 @@ const ProjectsSection = () => {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="px-6 pb-6"
+                          className="px-6 pb-8"
                         >
-                          <div className="flex flex-col gap-6 border-t border-gray-700/20 pt-6">
-                          <p className="text-gray-300 font-semibold text-md italic ml-2">Live preview</p>
+                          <div className="border-t border-gray-700/20 pt-6 space-y-8">
                             {project.liveUrl && (
-                              <div className="w-full h-[400px] sm:h-[500px] relative rounded-lg overflow-hidden shadow-lg">
-                                <iframe
-                                  src={project.liveUrl}
-                                  className="w-full h-full border-none"
-                                  title={`Live Preview - ${project.title}`}
-                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                  allowFullScreen
-                                />
+                              <div className="space-y-4">
+                                <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
+                                  <ExternalLink className="h-4 w-4" />
+                                  <span>Live Preview</span>
+                                </div>
+                                <div className="w-full h-[300px] md:h-[400px] relative rounded-lg overflow-hidden border border-gray-700/30 shadow-xl">
+                                  <iframe
+                                    src={project.liveUrl}
+                                    className="w-full h-full bg-gray-900"
+                                    title={`Live Preview - ${project.title}`}
+                                    loading="lazy"
+                                  />
+                                  <div className="absolute inset-0 pointer-events-none border-[0.5px] border-gray-600/20" />
+                                </div>
                               </div>
                             )}
 
-                            <div className="flex-col sm:flex-row items-center gap-6 ">
-                              <Link href={project.liveUrl} target="_blank" passHref className="text-blue-500 text-xl">
-                                {project.liveUrl}
-                              </Link>
-                              <p className="text-gray-300 flex-1">{project.description}</p>
+                            <div className="grid gap-4">
+                              <div className="flex items-center gap-3">
+                                <Link
+                                  href={project.liveUrl}
+                                  target="_blank"
+                                  className="flex items-center gap-2 text-indigo-300 hover:text-indigo-200 transition-colors"
+                                >
+                                  <span className="truncate">{project.liveUrl}</span>
+                                  <ExternalLink className="h-4 w-4" />
+                                </Link>
+                              </div>
                             </div>
 
-                            {/* Add tools display here */}
                             {project.tools && (
-                              <div className="flex flex-wrap gap-1">
-                                {project.tools.map((tool, toolIndex) => (
-                                  <motion.div
-                                    key={tool.name}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.4, delay: toolIndex * 0.1 }}
-                                    className="flex items-center p-1 space-x-2 bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200"
-                                  >
-                                    <Image
-                                      width={24}
-                                      height={24}
-                                      src={tool.icon}
-                                      alt={tool.name}
-                                      className="w-6 h-6 object-contain flex-shrink-0"
-                                      style={{
-                                        filter: `drop-shadow(2px 2px 8px ${tool.color}66)`,
-                                      }}
-                                    />
-                                    <span className="text-sm font-medium text-gray-300">
-                                      {tool.name}
-                                    </span>
-                                  </motion.div>
-                                ))}
+                              <div className="space-y-4">
+                                <p className="text-sm font-medium text-gray-300">Technologies Used</p>
+                                <div className="flex flex-wrap gap-2">
+                                  {project.tools.map((tool, toolIndex) => (
+                                    <motion.div
+                                      key={tool.name}
+                                      initial={{ opacity: 0, scale: 0.9 }}
+                                      animate={{ opacity: 1, scale: 1 }}
+                                      transition={{ duration: 0.4, delay: toolIndex * 0.1 }}
+                                      className="flex items-center p-1.5 space-x-2 bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-200 rounded-md"
+                                    >
+                                      <Image
+                                        width={24}
+                                        height={24}
+                                        src={tool.icon}
+                                        alt={tool.name}
+                                        className="w-6 h-6 object-contain flex-shrink-0"
+                                        style={{
+                                          filter: `drop-shadow(2px 2px 8px ${tool.color}66)`,
+                                        }}
+                                      />
+                                      <span className="text-sm font-medium text-gray-300">
+                                        {tool.name}
+                                      </span>
+                                    </motion.div>
+                                  ))}
+                                </div>
                               </div>
                             )}
                           </div>
