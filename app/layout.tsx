@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import Menu from "./components/Menu"
 import MetalScene from "./components/MetalScene"
-import Image from "next/image"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
