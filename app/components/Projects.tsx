@@ -102,7 +102,8 @@ const ProjectsSection = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto text-left ml-4">
-            A collection of websites and applications I've built for clients and personal projects.
+            A collection of websites and applications I've built for clients and personal projects. <br />
+            Most projects are continously being updated or still in development. (The hustle never stops).
           </p>
           <div className="h-[2px] w-32 bg-gradient-to-r from-indigo-400/60 to-green-400/60 rounded-full mx-auto mt-8" />
         </motion.div>
