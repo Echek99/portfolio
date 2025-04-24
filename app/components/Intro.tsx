@@ -38,10 +38,6 @@ const Intro = () => {
               Got an idea? I'm listening.
             </span>
           </h1>
-
-          <p className="text-md sm:text-xl md:text-xl lg:text-2xl text-gray-300 mt-6 italic">
-            Fullstack Developer & Technical Problem Solver
-          </p>
         </motion.div>
 
         {/* Resume Download Button */}
