@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import * as THREE from 'three'
 import { Environment } from "@react-three/drei"
 
-type GeometryType = 'torus' | 'sphere' | 'torusKnot' | 'capsule' | 'icosahedron'
+type GeometryType =  'torusKnot' |'torus' | 'sphere' | 'capsule' | 'icosahedron'
 
 interface GeometryProps {
   type: GeometryType
@@ -29,13 +29,13 @@ const Geometry = ({params} : { params: GeometryProps }) => {
     // Position animation
     const time = state.clock.elapsedTime
     switch (params.type) {
+      case 'torusKnot':
+        meshRef.current.position.z = Math.sin(time)
+        break
       case 'torus':
         meshRef.current.position.x = Math.cos(time)
         break
       case 'sphere':
-      case 'torusKnot':
-        meshRef.current.position.z = Math.sin(time)
-        break
       case 'capsule':
         meshRef.current.position.y = Math.sin(time)
         break
@@ -57,9 +57,9 @@ const Geometry = ({params} : { params: GeometryProps }) => {
 
   return (
     <mesh ref={meshRef} position={params.position}>
+      {params.type === 'torusKnot' && <torusKnotGeometry args={params.args as [number, number, number, number] || [1, 0.2, 100, 16]} />}
       {params.type === 'torus' && <torusGeometry args={params.args as [number, number, number, number, number] || [1, 2, 32, 8, Math.PI * 2]} />}
       {params.type === 'sphere' && <sphereGeometry args={params.args as [number, number, number] || [1, 32, 32]} />}
-      {params.type === 'torusKnot' && <torusKnotGeometry args={params.args as [number, number, number, number] || [1, 0.2, 100, 16]} />}
       {params.type === 'capsule' && <capsuleGeometry args={params.args as [number, number, number] || [1, 1, 1]} />}
       {params.type === 'icosahedron' && <icosahedronGeometry args={params.args as [number, number] || [1, 0]} />}
       <meshPhysicalMaterial
@@ -101,13 +101,14 @@ const TestSite = () => {
       <Environment preset="dawn" />
       <pointLight color="#fff" intensity={10} position={[-5, 5, 5]} distance={10} decay={2} />
 
+      <Geometry params={{ type: "torusKnot", position: [0, 0, 0], args: [1, 0.2, 100, 16], currentSection: currentSection, threshold: 2 }} />
+
       <Geometry params={{ type: "torus", position: [0, 0, 0], args: [1.5, 0.2, 16, 100], currentSection: currentSection, threshold: 0 }} />
 
       <Geometry params={{ type: "sphere", position: [0, 0, 0], args: [1.5, 32, 32], currentSection: currentSection, threshold: 1 }} />
 
-      <Geometry params={{ type: "capsule", position: [0, 0, 0], args: [0.75, 1.5, 20, 20], currentSection: currentSection, threshold: 2 }} />
+      <Geometry params={{ type: "capsule", position: [0, 0, 0], args: [0.75, 1.5, 20, 20], currentSection: currentSection, threshold: 3 }} />
 
-      <Geometry params={{ type: "torusKnot", position: [0, 0, 0], args: [1, 0.2, 100, 16], currentSection: currentSection, threshold: 3 }} />
 
       <Geometry params={{ type: "icosahedron", position: [0, 0, 0], args: [1.4, 0], currentSection: currentSection, threshold: 4 }} />
     </>

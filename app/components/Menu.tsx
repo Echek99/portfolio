@@ -1,63 +1,71 @@
-'use client'
-import Link from "next/link"
+"use client"
 import { useRef } from "react"
 
 const NavBar = () => {
-    const headerRef = useRef<HTMLDivElement>(null);
-    const links = ["HOME", "EXPERIENCE", "PROJECTS", "SKILLS"];
+  const headerRef = useRef<HTMLDivElement>(null)
+  const scrollText = " ~ REACH OUT, I NEVER SAY NEVER."
 
-    return (
-        <>
-            <style jsx global>{`
-                @keyframes infinite-scroll {
-                    0% { transform: translateX(0%); }
-                    100% { transform: translateX(-50%); }
-                }
+  return (
+    <>
+      <style jsx global>{`
+        @keyframes infinite-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
 
-                .mask-overflow {
-                    mask: linear-gradient(
-                        90deg,
-                        transparent 0%,
-                        black 10%,
-                        black 90%,
-                        transparent 100%
-                    );
-                }
-            `}</style>
-            
-            {/* Added top-0 to ensure fixed positioning works properly */}
-            <header
-                ref={headerRef}
-                className="fixed top-0 w-full border-white border-b-2 bg-black z-10 overflow-x-hidden"
-            >
-                <nav className="max-md:py-3">
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex justify-between items-center w-full lg:w-1/2 mx-auto px-5">
-                        {links.map((link) => (
-                            <Link key={link} href={`/#${link.toLowerCase()}`} className="text-white hover:text-green-400 transition-colors">
-                                {link}
-                            </Link>
-                        ))}
-                    </div>
+        .infinite-scroll-container {
+          display: inline-block;
+          white-space: nowrap;
+          animation: infinite-scroll 180s linear infinite;
+          font-style: italic;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
 
-                    {/* Mobile Infinite Scroll Navigation */}
-                    <div className="md:hidden mask-overflow relative h-5">
-                        <div className="absolute flex w-[200%] animate-infinite-scroll hover:animation-paused">
-                            {[...links, ...links].map((link, index) => (
-                                <Link
-                                    key={`${link}-${index}`}
-                                    href={`/#${link.toLowerCase()}`}
-                                    className="flex-shrink-0 px-6 text-white hover:text-green-400 transition-colors whitespace-nowrap"
-                                >
-                                    {link}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </nav>
-            </header>
-        </>
-    )
+        .infinite-scroll-container:hover {
+          animation-play-state: paused;
+        }
+
+        .mask-overflow {
+          mask: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+          );
+          -webkit-mask: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+          );
+        }
+      `}</style>
+
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 right-0 w-full border-white border-b-2 bg-black z-50 overflow-hidden"
+        style={{ backdropFilter: "blur(8px)" }}
+      >
+        <nav className="py-4">
+          {/* Infinite Scroll Navigation for both Mobile and Desktop */}
+          <div className="mask-overflow relative overflow-hidden flex items-center justify-center h-6">
+            <div className="infinite-scroll-container text-white italic montserrat">
+              {/* First copy of the text */}
+              {Array(25).fill(scrollText).join("")}
+              {/* Second copy to create the seamless loop */}
+              {Array(25).fill(scrollText).join("")}
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {/* Spacer to prevent content from being hidden under the fixed header */}
+      <div className="h-16"></div>
+    </>
+  )
 }
 
-export default NavBar;
+export default NavBar

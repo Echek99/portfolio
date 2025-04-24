@@ -3,8 +3,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
+// Skills data with type definition for better type safety
+interface Skill {
+  name: string;
+  icon: string;
+  color: string;
+}
 
-const skillsData = [
+const skillsData: Skill[] = [
   { name: "TypeScript", icon: "/icons/typescript.svg", color: "#3178C6" },
   { name: "JavaScript", icon: "/icons/javascript.svg", color: "#F7DF1E" },
   { name: "Next.js", icon: "/icons/nextjs.svg", color: "#fff" },
@@ -24,42 +30,41 @@ const skillsData = [
   { name: "react-three-fiber", icon: "/icons/react-three-fiber.svg", color: "#000" },
   { name: "FontAwesome", icon: "/icons/fontawesome.svg", color: "#228BE6" },
   { name: "Gimp", icon: "/icons/gimp.svg", color: "#5C5543" },
-  { name: "Canva", icon: "/icons/canva.svg", color: "#00C4CC" },
+  //{ name: "Canva", icon: "/icons/canva.svg", color: "#00C4CC" },
   { name: "Lucide", icon: "/icons/lucide.svg", color: "#74363d" },
   { name: "Tailwind", icon: "/icons/tailwind.svg", color: "#38B2AC" },
   { name: "Local Storage", icon: "/icons/localstorage.svg", color: "#000" },
 ];
 
 const SkillsSection: React.FC = () => {
-
   return (
-    <div className="pt-6 px-4 sm:px-6 lg:px-8 text-white mb-12" id="skills">
-      <div className="max-w-4xl mx-auto relative">
-        {/* <h1 className="text-3xl font-bold text-center mb-8 uppercase">Skills</h1> */}
-
-        <div className="flex flex-wrap max-w-[80%] mx-auto gap-1 align-center justify-center">
+    <div className="w-full" id="skills">
+      <div className="max-w-4xl mx-auto">
+        {/* Skills Grid */}
+        <div className="flex flex-wrap justify-center gap-2 max-w-[90%] sm:max-w-[85%] mx-auto">
           {skillsData.map((skill, index) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="flex items-center p-1 space-x-2 bg-gray-800/50
-                         border border-gray-700 backdrop-blur-sm hover:bg-gray-800/70
-                         transition-colors duration-200"
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="flex items-center p-2 space-x-2 
+                         bg-gray-800/50 border border-gray-700 
+                         backdrop-blur-sm hover:bg-gray-800/70
+                         transition-all duration-200 hover:scale-105"
             >
               <Image
-              width={24}
-              height={24}
-                src={skill.icon}
+                src={skill.icon || "/placeholder.svg"}
                 alt={skill.name}
-                className="w-6 h-6 object-contain flex-shrink-0"
+                width={24}
+                height={24}
+                className="w-5 h-5 object-contain flex-shrink-0"
                 style={{
-                  filter: `drop-shadow(2px 2px 8px ${skill.color}66)`,
+                  filter: `drop-shadow(0 0 6px ${skill.color}66)`,
                 }}
               />
-              <span className="text-sm font-medium text-gray-300">
+              <span className="text-sm font-medium text-gray-300 montserrat">
                 {skill.name}
               </span>
             </motion.div>
