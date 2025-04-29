@@ -128,8 +128,8 @@ const ContactPage = () => {
                   {
                     icon: Phone,
                     title: "Phone",
-                    content: "+1 (555) 123-4567",
-                    link: "tel:+15551234567",
+                    content: "+1 (551) 332-9504",
+                    link: "tel:+15513329504",
                   },
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-4">

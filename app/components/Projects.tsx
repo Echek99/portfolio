@@ -64,6 +64,22 @@ const projectsData = [
   },
   {
     id: 4,
+    title: "konstantineamax.com",
+    description: "Custom linktree inspired personal portfolio site for a client, built with a focus on performance and SEO.",
+    liveUrl: "https://konstantineamax.com",
+    tools: [
+      { name: "TypeScript", icon: "/icons/typescript.svg", color: "#3178C6" },
+      { name: "Next.js", icon: "/icons/nextjs.svg", color: "#fff" },
+      { name: "React", icon: "/icons/react.svg", color: "#61DAFB" },
+      { name: "Git", icon: "/icons/git.svg", color: "#F05032" },
+      { name: "CSS", icon: "/icons/css.svg", color: "#1572B6" },
+      { name: "Tailwind", icon: "/icons/tailwind.svg", color: "#38B2AC" },
+      { name: "Lucide", icon: "/icons/lucide.svg", color: "#74363d" },
+    ],
+    shadowColor: "#D4AF37",
+  },
+  {
+    id: 5,
     title: "LocalStorage Diary",
     description: "Built a simple journaling app using React and browser localStorage for persistence.",
     liveUrl: "https://echek99.github.io/your-online-diary/",
