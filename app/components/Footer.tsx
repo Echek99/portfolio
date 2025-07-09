@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Mail, Github, Linkedin, ExternalLink, Instagram } from "lucide-react"
+import { Mail, ExternalLink, } from "lucide-react"
 import SkillsSection from "./Skills"
 import SocialIcons from "./SocialIcons"
 

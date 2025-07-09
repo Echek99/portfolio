@@ -2,90 +2,90 @@
 
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, Search, PenTool, Palette, BookOpen, ImagePlus, Share2, CheckCircle } from "lucide-react"
+import { ArrowLeft, } from "lucide-react"
 import ProjectsSection from "../../components/Projects"
 
 // Services offered to clients with Lucide icons
-const services = [
-  {
-    id: 1,
-    title: "SEO Optimization",
-    description: "Improve your website's visibility and ranking on search engines.",
-    icon: Search,
-    color: "#4f46e5",
-    benefits: [
-      "Higher search engine rankings",
-      "Increased organic traffic",
-      "Better user experience",
-      "Improved conversion rates",
-    ],
-  },
-  {
-    id: 2,
-    title: "Content Design",
-    description: "Create engaging and effective content that resonates with your audience.",
-    icon: PenTool,
-    color: "#10b981",
-    benefits: [
-      "Compelling storytelling",
-      "Clear messaging hierarchy",
-      "Consistent brand voice",
-      "Engaging user experience",
-    ],
-  },
-  {
-    id: 3,
-    title: "Brand Design",
-    description: "Develop a cohesive brand identity that represents your business values.",
-    icon: Palette,
-    color: "#f59e0b",
-    benefits: [
-      "Distinctive visual identity",
-      "Consistent brand experience",
-      "Increased brand recognition",
-      "Professional market positioning",
-    ],
-  },
-  {
-    id: 4,
-    title: "Catalog Creation",
-    description: "Design professional product catalogs that showcase your offerings.",
-    icon: BookOpen,
-    color: "#ec4899",
-    benefits: [
-      "Professional product presentation",
-      "Organized information architecture",
-      "Compelling visual hierarchy",
-      "Print and digital optimization",
-    ],
-  },
-  {
-    id: 5,
-    title: "Photo & Video Editing",
-    description: "Professional editing services to enhance your visual content.",
-    icon: ImagePlus,
-    color: "#3b82f6",
-    benefits: [
-      "Professional image enhancement",
-      "Consistent visual style",
-      "Custom visual effects",
-      "Multi-platform optimization",
-    ],
-  },
-  {
-    id: 6,
-    title: "Social Media Graphics",
-    description: "Eye-catching graphics optimized for various social media platforms.",
-    icon: Share2,
-    color: "#8b5cf6",
-    benefits: [
-      "Platform-specific designs",
-      "Engagement-optimized visuals",
-      "Consistent brand presence",
-      "Trend-aware creative direction",
-    ],
-  },
-]
+// const services = [
+//   {
+//     id: 1,
+//     title: "SEO Optimization",
+//     description: "Improve your website's visibility and ranking on search engines.",
+//     icon: Search,
+//     color: "#4f46e5",
+//     benefits: [
+//       "Higher search engine rankings",
+//       "Increased organic traffic",
+//       "Better user experience",
+//       "Improved conversion rates",
+//     ],
+//   },
+//   {
+//     id: 2,
+//     title: "Content Design",
+//     description: "Create engaging and effective content that resonates with your audience.",
+//     icon: PenTool,
+//     color: "#10b981",
+//     benefits: [
+//       "Compelling storytelling",
+//       "Clear messaging hierarchy",
+//       "Consistent brand voice",
+//       "Engaging user experience",
+//     ],
+//   },
+//   {
+//     id: 3,
+//     title: "Brand Design",
+//     description: "Develop a cohesive brand identity that represents your business values.",
+//     icon: Palette,
+//     color: "#f59e0b",
+//     benefits: [
+//       "Distinctive visual identity",
+//       "Consistent brand experience",
+//       "Increased brand recognition",
+//       "Professional market positioning",
+//     ],
+//   },
+//   {
+//     id: 4,
+//     title: "Catalog Creation",
+//     description: "Design professional product catalogs that showcase your offerings.",
+//     icon: BookOpen,
+//     color: "#ec4899",
+//     benefits: [
+//       "Professional product presentation",
+//       "Organized information architecture",
+//       "Compelling visual hierarchy",
+//       "Print and digital optimization",
+//     ],
+//   },
+//   {
+//     id: 5,
+//     title: "Photo & Video Editing",
+//     description: "Professional editing services to enhance your visual content.",
+//     icon: ImagePlus,
+//     color: "#3b82f6",
+//     benefits: [
+//       "Professional image enhancement",
+//       "Consistent visual style",
+//       "Custom visual effects",
+//       "Multi-platform optimization",
+//     ],
+//   },
+//   {
+//     id: 6,
+//     title: "Social Media Graphics",
+//     description: "Eye-catching graphics optimized for various social media platforms.",
+//     icon: Share2,
+//     color: "#8b5cf6",
+//     benefits: [
+//       "Platform-specific designs",
+//       "Engagement-optimized visuals",
+//       "Consistent brand presence",
+//       "Trend-aware creative direction",
+//     ],
+//   },
+// ]
 
 export default function PortfolioPage() {
   const router = useRouter()
