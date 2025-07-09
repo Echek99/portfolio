@@ -83,15 +83,6 @@ const Intro = () => {
           >
             Media Gallery
           </button> */}
-                    <button
-            onClick={() => router.push("/contact")}
-            className="inline-flex items-center px-24 py-3 border border-indigo-400/50 rounded-full 
-                      text-lg font-medium text-indigo-300 hover:bg-indigo-900/30 
-                      transition-all duration-300 uppercase montserrat"
-            style={{ backdropFilter: "blur(12px)" }}
-          >
-            Contact Me
-          </button>
           <button
             onClick={() => router.push("/portfolio")}
             className="inline-flex items-center px-24 py-3 border border-green-400/50 rounded-full 
@@ -99,7 +90,16 @@ const Intro = () => {
                       transition-all duration-300 uppercase montserrat"
             style={{ backdropFilter: "blur(12px)" }}
           >
-            Portfolio
+            Projects
+          </button>
+          <button
+            onClick={() => router.push("/contact")}
+            className="inline-flex items-center px-24 py-3 border border-indigo-400/50 rounded-full 
+                      text-lg font-medium text-indigo-300 hover:bg-indigo-900/30 
+                      transition-all duration-300 uppercase montserrat"
+            style={{ backdropFilter: "blur(12px)" }}
+          >
+            Contact Me
           </button>
 
         </motion.div>

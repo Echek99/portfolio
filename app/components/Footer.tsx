@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Mail, Github, Linkedin, ExternalLink, Instagram } from "lucide-react"
 import SkillsSection from "./Skills"
+import SocialIcons from "./SocialIcons"
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
@@ -48,31 +49,8 @@ const Footer = () => {
                             <Mail className="h-4 w-4" />
                             <span>echeverrijulian100@gmail.com</span>
                         </a>
-                        <div className="flex items-center gap-4 mt-4">
-                            <a
-                                href="https://www.instagram.com/echesinho"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-indigo-300 transition-colors"
-                            >
-                                <Instagram className="h-5 w-5" />
-                            </a>
-                            <a
-                                href="https://github.com/yourusername"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-indigo-300 transition-colors"
-                            >
-                                <Github className="h-5 w-5" />
-                            </a>
-                            <a
-                                href="https://linkedin.com/in/yourusername"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-indigo-300 transition-colors"
-                            >
-                                <Linkedin className="h-5 w-5" />
-                            </a>
+                        <div className="flex gap-4 justify-start my-6">
+                            <SocialIcons />
                         </div>
                     </div>
 

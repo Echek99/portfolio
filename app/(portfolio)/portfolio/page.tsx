@@ -109,9 +109,8 @@ export default function PortfolioPage() {
       {/* Projects Section */}
       <ProjectsSection />
 
-      {/* Services Section - Professional Redesign */}
+      {/* Services Section - Professional Redesign
       <section className="py-6 px-4 sm:px-6 lg:px-8 relative">
-        {/* Background gradient overlay */}
         <div className="absolute inset-0"></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -147,16 +146,13 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                {/* Service Card */}
                 <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-md rounded-xl border border-gray-700/40 overflow-hidden transition-all group-hover:border-gray-600/60 group-hover:shadow-lg group-hover:shadow-indigo-900/10">
-                  {/* Top colored bar */}
                   <div
                     className="h-1.5 w-full transition-all duration-300 group-hover:h-2"
                     style={{ background: `linear-gradient(to right, ${service.color}, ${service.color}50)` }}
                   ></div>
 
                   <div className="p-6">
-                    {/* Icon and Title */}
                     <div className="flex items-start mb-5">
                       <div
                         className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center mr-4 transition-all duration-300 group-hover:scale-110"
@@ -176,10 +172,8 @@ export default function PortfolioPage() {
                       </div>
                     </div>
 
-                    {/* Description */}
                     <p className="text-gray-300 mb-6 text-sm leading-relaxed">{service.description}</p>
 
-                    {/* Benefits */}
                     <div className="space-y-2">
                       <p className="text-xs uppercase tracking-wider text-gray-500 font-medium mb-2">Key Benefits</p>
                       {service.benefits.map((benefit, i) => (
@@ -195,7 +189,6 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Bottom CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +208,7 @@ export default function PortfolioPage() {
             </button>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Process Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">

@@ -286,7 +286,7 @@ const ContactPage = () => {
               </form>
             </div>
             {/* FAQ Section */}
-            <div className="my-12 bg-gradient-to-br from-gray-800/10 to-gray-900/10 backdrop-blur-lg border border-gray-700/30 rounded-xl p-8">
+            {/* <div className="my-12 bg-gradient-to-br from-gray-800/10 to-gray-900/10 backdrop-blur-lg border border-gray-700/30 rounded-xl p-8">
               <h2 className="text-2xl font-medium text-white mb-6">Frequently Asked Questions</h2>
 
               <div className="space-y-6">
@@ -312,9 +312,9 @@ const ContactPage = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
             {/* Additional Info */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
                   icon: Clock,
@@ -348,7 +348,7 @@ const ContactPage = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
